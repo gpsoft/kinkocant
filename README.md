@@ -1,5 +1,7 @@
 # Kinkocant
 
+See also [a blog post about kinkocant](http://gpsoft.dip.jp/gpblog/posts-output/2017-08-13-railsenv/) in Japanese.
+
 ## Intro
 
 Kinkocant is a configuration that enables you to start a Rails project easily. You just need Docker to use it.
@@ -14,6 +16,13 @@ Kinkocant is a Japanese word, aka "ideal cant", meaning the way a train runs thr
 
 
 Currently the latest `pg` gem(version 0.21.0) doesn't likely work with `rails 4.2.*`; a workaround is to use `pg 0.20.0`.
+
+## Docker volumes
+
+We use a couple of docker volumes.
+
+    $ docker volume create pgdata
+    $ docker volume create gems
 
 ## Usage
 
@@ -71,4 +80,4 @@ For example:
 
     $ docker-compose exec web rake db:setup db:migrate
 
-`rails` and `rake` command has been *binstub*-ed by Rails; so you don't need to prefix `gem exec` before the command;
+`rails` and `rake` command has been *binstub*-ed by Rails; so you don't need to prefix `bundle exec` before the command;
