@@ -1,6 +1,8 @@
 FROM ruby:2.4.1
 
 ENV LANG C.UTF-8
+RUN echo "Asia/Tokyo" >/etc/timezone
+RUN ln -snf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 RUN apt-get update -qq \
  && apt-get install -y \
@@ -12,7 +14,9 @@ RUN apt-get update -qq \
       libqt4-dev \
       xvfb \
       nodejs \
-      npm
+      npm \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 ENV APP_HOME /rapp
 RUN mkdir -p $APP_HOME

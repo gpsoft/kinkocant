@@ -27,7 +27,7 @@ services:
             - db
 volumes:
     pgdata:
-        external: false
+        external: true
     gems:
-        external: false
+        external: true
 
